@@ -14,10 +14,11 @@ function purify(text) {
       len += 1;
     }
   }
-  return out.replace(new RegExp("&nbsp;&nbsp;&nbsp;&nbsp;", "g"), "\t");
+  out.replace(new RegExp("&nbsp;&nbsp;&nbsp;&nbsp;", "g"), "\t");
+  return out.replace(new RegExp("&nbsp;", "g"), " ");
 }
 
-/* prases html string into Python
+/* parses html string into Python
 */
 function parse(string) {
   var str_arr = string.split("\n");
