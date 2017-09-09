@@ -24,3 +24,40 @@
 .blue {
   background-color: lightblue;
 }
+
+* {
+  box-sizing: border-box;
+}
+h3 {
+  text-align: center;
+}
+.header {
+  text-align: center;
+  background-color: #4286f4;
+  color: white;
+  padding: 15px;
+}
+.footer {
+  text-align: center;
+  background-color: #4286f4;
+  color: white;
+  padding: 15px
+}
+.column {
+  float: left;
+  padding: 15px;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.content {
+  text-align: center;
+  width: 33%;
+}
+.editor-window {
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
