@@ -28,8 +28,9 @@
 * {
   box-sizing: border-box;
 }
-h3 {
-  text-align: center;
+#editor {
+  padding: 15px;
+  height: 200px;
 }
 .header {
   text-align: center;
