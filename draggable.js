@@ -5,6 +5,7 @@ var posY = new Map();
 var currentobj; //object being dragged
 var isGreen; //is currentobj green?
 var isRed; //is currentobj red?
+var justMade;
 
 function totaloffset(elem) { //get total offset of object
   var pos = {
@@ -112,6 +113,7 @@ function draggablemousedown(e,targetOverride = null) {
   posY.set(elem,0);
   document.onmousemove = draggablemousemove;
   document.onmouseup = draggablemouseup;
+  justMade = false;
 }
 function draggablemousemove() {
   e = window.event;
@@ -133,18 +135,52 @@ function draggablemousemove() {
 }
 function draggablemouseup() {
   elem = getNearestElement();
+
+  document.onmousemove = null;
+  document.onmouseup = null;
+
+  highlightDiv(null);
   if (isGreen) {
+    var target;
     if (elem == "end") {
       currentobj.parentElement.appendChild(currentobj);
       currentobj.style.left = "0px";
       currentobj.style.top = "0px";
+      if (justMade) {
+        var target = currentobj.parentElement.getElementsByClassName("draggable green").item(currentobj.parentElement.getElementsByClassName("draggable green").length-2);
+      }
     } else if (elem) {
       currentobj.parentElement.insertBefore(currentobj,elem);
       currentobj.style.left = "0px";
       currentobj.style.top = "0px";
+      if (justMade) {
+        var i = 0;
+        var allGreens = document.getElementById("draggablecontainer").getElementsByClassName("draggable green");
+        while (true) {
+          if (allGreens.item(i) == elem) {
+            if (allGreens.item(i-1) == currentobj) {
+              target = allGreens.item(i-2);
+            } else {
+              target = allGreens.item(i-1);
+            }
+            break;
+          }
+          i++;
+        }
+      }
     } else {
       currentobj.parentElement.removeChild(currentobj);
+      return;
     }
+    if (justMade) {
+      console.log(target.innerHTML);
+      var amt = (target.innerHTML+'>&nbsp;&nbsp;&nbsp;&nbsp;</div>').match(new RegExp('>&nbsp;&nbsp;&nbsp;&nbsp;</div>','g')).length-1;
+      console.log(amt);
+      for (var i = 0;i<amt;i++) {
+        currentobj.innerHTML = '<div class = "draggable red">&nbsp;&nbsp;&nbsp;&nbsp;</div>' + currentobj.innerHTML;
+      }
+    }
+
   } else if (isRed) {
     if (elem) {
       elem.insertBefore(currentobj,elem.firstChild);
@@ -169,11 +205,6 @@ function draggablemouseup() {
     currentobj.style.left = "0px";
     currentobj.style.top = "0px";
   }
-
-  document.onmousemove = null;
-  document.onmouseup = null;
-
-  highlightDiv(null);
 }
 
 function registerdragevents() {
@@ -206,6 +237,7 @@ function semidraggablemousedown(e) {
   elem.style.left = positionDifference.left;
   elem.style.top = positionDifference.top;
   elem.onmousedown = draggablemousedown;
+  justMade = true;
 }
 
 function registersemidragevents() {
