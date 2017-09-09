@@ -18,6 +18,12 @@
       <div class="column content">
         <h3>Templates</h3>
         <div id="semidraggablecontainer">
+          <div class = "semidraggable green endswithsemicolon">
+            if
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            :
+            <br>
+          </div>
           <div class = "semidraggable green">
             print(
             <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
@@ -38,13 +44,15 @@
             <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
             <br>
           </div>
+          <div class = "semidraggable red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         </div>
       </div>
-      <div class="column content">
+      <div class="column content" style="text-align:left;">
         <h3>Blocks</h3>
         <button type="button" onclick="block_to_code()">Convert to Code</button><br>
         <div id="draggablecontainer">
           <div class = "draggable green">
+            <div class = "draggable red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
             print(
             <div class = "draggable blue">65</div>
             )
@@ -68,76 +76,76 @@
       </div>
     </div>
     <script>
-    //download editor contents as .py file
-    function download(filename, text) {
-      var element = document.createElement('a');
-      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-      element.setAttribute('download', filename);
-      element.style.display = 'none';
-      document.body.appendChild(element);
-      element.click();
-      document.body.removeChild(element);
-    }
-    document.getElementById("dwn-btn").addEventListener("click", function(){
-      var text = editor.getValue();
-      var filename = "script.py";
-      download(filename, text);
-    }, false);
-    </script>
-    <div class="footer">
-      <p>This is a project for PennApps XVI by Sam Uwe Alws and Eric Zheng.</p>
-    </div>
-    <script type="text/javascript">
-    function outf(text) {
-      var mypre = document.getElementById("output");
-      mypre.innerHTML = mypre.innerHTML + text;
-    }
-    function builtinRead(x) {
-      if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-      throw "File not found: '" + x + "'";
-      return Sk.builtinFiles["files"][x];
-    }
-    function runit() {
-      var prog = editor.getValue();
-      var mypre = document.getElementById("output");
-      mypre.innerHTML = '';
-      Sk.pre = "output";
-      Sk.configure({output:outf, read:builtinRead});
-      (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
-      var myPromise = Sk.misceval.asyncToPromise(function() {
-        return Sk.importMainWithBody("<stdin>", false, prog, true);
-      });
-      myPromise.then(function(mod) {
-        console.log('success');
-      },
-      function(err) {
-        console.log(err.toString());
-      });
-    }
-    function get_html() {
-      var inputs = document.getElementById("draggablecontainer").getElementsByTagName("input");
-      for (var i = 0;i<inputs.length;i++) {
-        //add a temporary span that has the value as innerhtml
-        var elem = inputs.item(i);
-        var s = document.createElement("span");
-        s.innerHTML = elem.value;
-        elem.parentElement.insertBefore(s,elem);
-        s.className = "temporary";
+      //download editor contents as .py file
+      function download(filename, text) {
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename);
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
       }
-      var returnVal = document.getElementById("draggablecontainer").innerHTML;
-      var temps = document.getElementById("draggablecontainer").getElementsByClassName("temporary");
-      for (var i = 0;i<temps.length;i++) {
-        //delete all the temporary crap we made before
-        var elem = temps.item(i);
-        elem.parentElement.removeChild(elem);
+      document.getElementById("dwn-btn").addEventListener("click", function(){
+        var text = editor.getValue();
+        var filename = "script.py";
+        download(filename, text);
+      }, false);
+      </script>
+      <div class="footer">
+        <p>This is a project for PennApps XVI by Sam Uwe Alws and Eric Zheng.</p>
+      </div>
+      <script type="text/javascript">
+      function outf(text) {
+        var mypre = document.getElementById("output");
+        mypre.innerHTML = mypre.innerHTML + text;
       }
-      return returnVal;
-    }
-    function block_to_code() {
-      editor.setValue(parse(get_html()));
-    }
-    registerdragevents();
-    registersemidragevents();
+      function builtinRead(x) {
+        if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+        throw "File not found: '" + x + "'";
+        return Sk.builtinFiles["files"][x];
+      }
+      function runit() {
+        var prog = editor.getValue();
+        var mypre = document.getElementById("output");
+        mypre.innerHTML = '';
+        Sk.pre = "output";
+        Sk.configure({output:outf, read:builtinRead});
+        (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+        var myPromise = Sk.misceval.asyncToPromise(function() {
+          return Sk.importMainWithBody("<stdin>", false, prog, true);
+        });
+        myPromise.then(function(mod) {
+          console.log('success');
+        },
+        function(err) {
+          console.log(err.toString());
+        });
+      }
+      function get_html() {
+        var inputs = document.getElementById("draggablecontainer").getElementsByTagName("input");
+        for (var i = 0;i<inputs.length;i++) {
+          //add a temporary span that has the value as innerhtml
+          var elem = inputs.item(i);
+          var s = document.createElement("span");
+          s.innerHTML = elem.value;
+          elem.parentElement.insertBefore(s,elem);
+          s.className = "temporary";
+        }
+        var returnVal = document.getElementById("draggablecontainer").innerHTML;
+        var temps = document.getElementById("draggablecontainer").getElementsByClassName("temporary");
+        for (var i = 0;i<temps.length;i++) {
+          //delete all the temporary crap we made before
+          var elem = temps.item(i);
+          elem.parentElement.removeChild(elem);
+        }
+        return returnVal;
+      }
+      function block_to_code() {
+        editor.setValue(parse(get_html()));
+      }
+      registerdragevents();
+      registersemidragevents();
     </script>
   </body>
 </html>

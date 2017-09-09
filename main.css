@@ -24,6 +24,10 @@
 .blue {
   background-color: lightblue;
 }
+.red {
+  background-color: pink;
+  margin-left: -2px;
+}
 
 * {
   box-sizing: border-box;

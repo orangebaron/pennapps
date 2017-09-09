@@ -4,6 +4,7 @@ var posX = new Map(); //map of object to position
 var posY = new Map();
 var currentobj; //object being dragged
 var isGreen; //is currentobj green?
+var isRed; //is currentobj red?
 
 function totaloffset(elem) { //get total offset of object
   var pos = {
@@ -39,9 +40,12 @@ function getNearestElement() {
       }
       i++;
     }
-  } else {
-    //find the nearest blue object if it's close enough
+  } else { //find the nearest blue object if it's close enough
     var elems = document.getElementById("draggablecontainer").getElementsByClassName("draggable blue");
+    if (isRed) {
+      //scrap that, find the neatest green object if it's close enough
+      elems = document.getElementById("draggablecontainer").getElementsByClassName("draggable green");
+    }
     var minDist = 65;
     var minElement;
     for (var i = 0;i<elems.length;i++) {
@@ -55,21 +59,24 @@ function getNearestElement() {
         }
       }
     }
-    var dist = Math.sqrt(Math.pow(posX.get(currentobj),2)+Math.pow(posY.get(currentobj),2));
-    if (dist<minDist) {
-      minDist = dist;
-      minElement = currentobj;
+    if (!isRed) {
+      //if it's blue, you can snap it back to its original place this way
+      var dist = Math.sqrt(Math.pow(posX.get(currentobj),2)+Math.pow(posY.get(currentobj),2));
+      if (dist<minDist) {
+        minDist = dist;
+        minElement = currentobj;
+      }
     }
     return minElement;
   }
 }
 var highlightedDiv;
-function highlightDiv(elem,red) {
+function highlightDiv(elem,writeinred) {
   if (highlightedDiv) {
     highlightedDiv.style.border = "none";
   }
   if (elem) {
-    if (red) {
+    if (writeinred) {
       elem.style.border = "thick solid red";
     } else if (isGreen) {
       if (elem == "end") {
@@ -79,6 +86,8 @@ function highlightDiv(elem,red) {
       } else {
         elem.style.borderTop = "thick solid yellow";
       }
+    } else if (isRed) {
+      elem.style.borderLeft = "thick solid yellow";
     } else {
       elem.style.border = "thick solid yellow";
     }
@@ -92,6 +101,7 @@ function draggablemousedown(e,targetOverride = null) {
     return;
   }
   isGreen = elem.className.search("green") != -1;
+  isRed = elem.className.search("red") != -1;
   lastX.set(elem,e.clientX);
   lastY.set(elem,e.clientY);
   currentobj = elem;
@@ -128,6 +138,14 @@ function draggablemouseup() {
     } else if (elem) {
       console.log(elem);
       currentobj.parentElement.insertBefore(currentobj,elem);
+      currentobj.style.left = "0px";
+      currentobj.style.top = "0px";
+    } else {
+      currentobj.parentElement.removeChild(currentobj);
+    }
+  } else if (isRed) {
+    if (elem) {
+      elem.insertBefore(currentobj,elem.firstChild);
       currentobj.style.left = "0px";
       currentobj.style.top = "0px";
     } else {
