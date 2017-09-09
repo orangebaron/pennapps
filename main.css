@@ -29,12 +29,19 @@
   margin-left: -2px;
 }
 
+.sidebtn {
+  padding: 2px;
+  border-radius: 2px;
+}
 .sidebtn:hover {
   background-color: #4286f4;
   transition: .5s;
 }
 .highlightedbtn {
-  background-color: #0246b4;
+  color: white;
+  background-color: #2266d4;
+  padding: 2px;
+  border-radius: 2px;
 }
 
 .panel {
