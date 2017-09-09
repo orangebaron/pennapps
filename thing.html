@@ -16,7 +16,7 @@
     <h1 style="display:inline;font-size:4em;">blockat</h1>
   </div>
   <div class="clearfix">
-    <div class="column content" style="text-align:right;">
+    <div class="column content" style="text-align:right; width: 10%;">
       <h3>&nbsp;</h3>
       <p onclick="showpanel('basic')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Basic</p>
       <p onclick="showpanel('flowcontrol')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Flow Control</p>
@@ -26,7 +26,7 @@
       <p onclick="showpanel('group')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Groups</p>
       <p onclick="showpanel('uwedefined')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">User-Defined</p>
     </div>
-    <div class="column content">
+    <div class="column content" style="width: 30%;">
       <h3>Templates</h3>
       <div id="semidraggablecontainer" style="position:relative">
         <div class="bottom panel" id="basic">
@@ -281,10 +281,10 @@
         </div>
       </div>
     </div>
-    <div class="column content" style="text-align:left;">
+    <div class="column content" style="width: 30%;">
       <h3>Blocks</h3>
       <button type="button" onclick="block_to_code()">Convert to Code</button><br>
-      <div id="draggablecontainer">
+      <div id="draggablecontainer" style="text-align: left;">
         <div class = "draggable green">
           print(
           <div class = "draggable blue">
@@ -295,7 +295,7 @@
         </div>
       </div>
     </div>
-    <div class="column content">
+    <div class="column content" style="width: 30%;">
       <h3>Code</h3>
       Output:
       <pre id="output" style="border: 1px solid grey; text-align: left; padding: 2px;">65</pre>
