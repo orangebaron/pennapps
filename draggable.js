@@ -175,7 +175,12 @@ function draggablemouseup() {
     if (justMade) {
       console.log(target.innerHTML);
       var amt = (target.innerHTML+'>&nbsp;&nbsp;&nbsp;&nbsp;</div>').match(new RegExp('>&nbsp;&nbsp;&nbsp;&nbsp;</div>','g')).length-1;
-      console.log(amt);
+      if (target.className.search("endswithcolon")!=-1) {
+        amt++;
+      }
+      if (currentobj.innerHTML.search("else")!=-1 || currentobj.innerHTML.search("elif")!=-1) {
+        amt--;
+      }
       for (var i = 0;i<amt;i++) {
         currentobj.innerHTML = '<div class = "draggable red">&nbsp;&nbsp;&nbsp;&nbsp;</div>' + currentobj.innerHTML;
       }
