@@ -39,9 +39,22 @@ function getNearestElement() {
   }
   return minElement;
 }
+var highlightedDiv;
+function highlightDiv(elem,red) {
+  if (highlightedDiv) {
+    highlightedDiv.style.border = "none";
+  }
+  if (elem) {
+    elem.style.border = red ? "thick solid red" : "thick solid white";
+  }
+  highlightedDiv = elem;
+}
 
 function draggablemousedown(e) {
   elem = e.target;
+  if (elem.innerHTML == "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") {
+    return
+  }
   lastX.set(elem,e.clientX);
   lastY.set(elem,e.clientY);
   currentobj = elem;
@@ -62,8 +75,15 @@ function draggablemousemove() {
   lastY.set(currentobj,e.clientY);
   posX.set(currentobj,posX.get(currentobj)+deltaX);
   posY.set(currentobj,posY.get(currentobj)+deltaY);
-  elem.style.left = posX.get(currentobj) + "px";
-  elem.style.top = posY.get(currentobj) + "px";
+  currentobj.style.left = posX.get(currentobj) + "px";
+  currentobj.style.top = posY.get(currentobj) + "px";
+
+  var elem = getNearestElement()
+  if (elem) {
+    highlightDiv(elem);
+  } else {
+    highlightDiv(currentobj,true);
+  }
 }
 function draggablemouseup() {
   elem = getNearestElement();
@@ -71,6 +91,8 @@ function draggablemouseup() {
     var text = currentobj.innerHTML;
     currentobj.innerHTML = elem.innerHTML;
     elem.innerHTML = text;
+  } else {
+    currentobj.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
   }
   currentobj.style.left = "0px";
   currentobj.style.top = "0px";
@@ -79,6 +101,8 @@ function draggablemouseup() {
 
   document.onmousemove = null;
   document.onmouseup = null;
+
+  highlightDiv(null);
 }
 
 function registerevents() {
