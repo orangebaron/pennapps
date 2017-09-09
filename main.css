@@ -38,12 +38,14 @@
 }
 .header {
   text-align: center;
+  font-family: arial;
   background-color: #4286f4;
   color: white;
   padding: 15px;
 }
 .footer {
   text-align: center;
+  font-family: arial;
   background-color: #4286f4;
   color: white;
   padding: 15px
@@ -58,6 +60,7 @@
   display: table;
 }
 .content {
+  font-family: arial;
   text-align: center;
   width: 33%;
 }
