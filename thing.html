@@ -25,7 +25,7 @@
             <br>
           </div>
           <div class = "semidraggable blue">
-            65
+            <input type="number" style = "width:5em;" placeholder="number"></input>
           </div>
           <br>
           <div class = "semidraggable blue">
@@ -115,7 +115,23 @@
       });
     }
     function get_html() {
-      return document.getElementById("draggablecontainer").innerHTML;
+      var inputs = document.getElementById("draggablecontainer").getElementsByTagName("input");
+      for (var i = 0;i<inputs.length;i++) {
+        //add a temporary span that has the value as innerhtml
+        var elem = inputs.item(i);
+        var s = document.createElement("span");
+        s.innerHTML = elem.value;
+        elem.parentElement.insertBefore(s,elem);
+        s.className = "temporary";
+      }
+      var returnVal = document.getElementById("draggablecontainer").innerHTML;
+      var temps = document.getElementById("draggablecontainer").getElementsByClassName("temporary");
+      for (var i = 0;i<temps.length;i++) {
+        //delete all the temporary crap we made before
+        var elem = temps.item(i);
+        elem.parentElement.removeChild(elem);
+      }
+      return returnVal;
     }
     function block_to_code() {
       editor.setValue(parse(get_html()));
