@@ -30,6 +30,10 @@
       <h3>Templates</h3>
       <div id="semidraggablecontainer" style="position:relative">
         <div class="bottom panel" id="basic">
+          <div class = "semidraggable blue">
+            x
+          </div>
+          <br>
           <div class = "semidraggable red">&nbsp;&nbsp;&nbsp;&nbsp;</div><br>
           <div class = "semidraggable green">
             print(
@@ -49,12 +53,6 @@
             <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
           </div>
           <br>
-          <div class = "semidraggable green">
-            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-            &nbsp;=&nbsp;
-            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-            <br>
-          </div>
         </div>
         <div class="bottom panel" id="flowcontrol">
           <div class = "semidraggable green endswithsemicolon">
@@ -93,6 +91,12 @@
             range(
             <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
             )
+            <br>
+          </div>
+          <div class = "semidraggable green">
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            &nbsp;=&nbsp;
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
             <br>
           </div>
         </div>
@@ -247,6 +251,34 @@
           </div>
           <br>
         </div>
+        <div class="bottom panel" id="uwedefined">
+          <div class = "semidraggable green endswithsemicolon">
+            def&nbsp;<input type="text" style="width:5em;" placeholder="func"></input>(
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            ):
+            <br>
+          </div>
+          <div class = "semidraggable blue">
+            <div class="draggable blue"><input type="text" style="width:5em;" placeholder="var"></input></div>
+          </div>
+          <br>
+          <div class = "semidraggable green endswithsemicolon">
+            class&nbsp;<input type="text" style="width:5em;" placeholder="class"></input>
+            :
+            <br>
+          </div>
+          <div class = "semidraggable green">
+            import&nbsp;
+            <input type="text" style="width:5em;" placeholder="module"></input>
+            <br>
+          </div>
+          <div class = "semidraggable blue">
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            .
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+          </div>
+          <br>
+        </div>
       </div>
     </div>
     <div class="column content" style="text-align:left;">
@@ -341,13 +373,10 @@
       s.className = "temporary";
     }
     var returnVal = document.getElementById("draggablecontainer").innerHTML;
-    while (true) {
+    var temps = document.getElementById("draggablecontainer").getElementsByClassName("temporary");
+    for (var i = 0;i<temps.length;i++) {
       //delete all the temporary crap we made before
-      var temps = document.getElementById("draggablecontainer").getElementsByClassName("temporary");
-      if (temps.length == 0) {
-        break;
-      }
-      var elem = temps.item(0);
+      var elem = temps.item(i);
       elem.parentElement.removeChild(elem);
     }
     return returnVal;
