@@ -24,7 +24,6 @@ function getNearestElement() {
   for (var i = 0;i<elems.length;i++) {
     var elem = elems.item(i);
     if (elem != currentobj) {
-      console.log(elem.offsetTop);
       var dist = Math.sqrt(Math.pow(totaloffset(elem).top-totaloffset(currentobj).top,2) +
         Math.pow(totaloffset(elem).left-totaloffset(currentobj).left,2));
       if (dist < minDist) {
@@ -33,12 +32,9 @@ function getNearestElement() {
       }
     }
   }
-  var distaa = Math.sqrt(Math.pow(posX.get(currentobj),2)+Math.pow(posY.get(currentobj),2));
-  console.log(distaa);
-  console.log(minDist);
-  console.log(minElement);
-  if (distaa<minDist) {
-    minDist = distaa;
+  var dist = Math.sqrt(Math.pow(posX.get(currentobj),2)+Math.pow(posY.get(currentobj),2));
+  if (dist<minDist) {
+    minDist = dist;
     minElement = currentobj;
   }
   return minElement;
