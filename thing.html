@@ -14,13 +14,13 @@ h3 {
 }
 .header {
   text-align: center;
-  background-color: grey;
+  background-color: #4286f4;
   color: white;
   padding: 15px;
 }
 .footer {
   text-align: center;
-  background-color: grey;
+  background-color: #4286f4;
   color: white;
   padding: 15px
 }
@@ -50,11 +50,11 @@ h3 {
 <script src="parse.js" type="text/javascript"></script>
 <link type="text/css" rel="stylesheet" href="main.css">
 <script src = "draggable.js"></script>
-<script src = "semidraggable.js"></script>
 </head>
 <body>
   <div class="header">
-    <h1>blockat</h1>
+    <img src="OCTO-CAT.png" style="height: 50px;"></img>
+    <h1 style="display:inline;font-size:4em;">blockat</h1>
   </div>
   <div class="clearfix">
     <div class="column content">
@@ -87,7 +87,7 @@ h3 {
     <div class="column content">
       <h3>Code</h3>
       Output:
-      <pre id="output" style="border: 1px solid grey; text-align: left; padding: 2px;"></pre>
+      <pre id="output" style="border: 1px solid grey; text-align: left; padding: 2px;">65</pre>
       <button type="button" onclick="runit()">Run Code</button>
       <input type="button" id="dwn-btn" value="Download Code"/>
       <br>
@@ -117,7 +117,7 @@ h3 {
   }, false);
   </script>
   <div class="footer">
-    <p>This is a project for PennApps XVI by Sam Alws, Eric Zheng, and Bryan Yao.</p>
+    <p>This is a project for PennApps XVI by Sam Alws and Eric Zheng.</p>
   </div>
   <script type="text/javascript">
   function outf(text) {
