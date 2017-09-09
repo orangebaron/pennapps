@@ -31,11 +31,17 @@ function parse(string) {
       for (var j in tokens) {
         if (tokens[j].indexOf("br") > -1) {
           out += "\n";
-        } else if (j % 2 == 0 && j != 0) {
+        } else if (j % 2 == 0 /* && j != 0*/) {
           out += purify(tokens[j]);
         }
       }
     }
   }
   return out;
+}
+
+/* parses Python into html
+*/
+function anti_parse(code) {
+
 }
