@@ -1,56 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      .draggable {
-        position: relative;
-        user-select: none;
-        color: white;
-        padding: 2px;
-        border-radius: 3px;
-        font-weight: bold;
-        display: inline;
-        border-color: white;
-      }
-      .semidraggable {
-        position: relative;
-        user-select: none;
-        color: white;
-        padding: 2px;
-        border-radius: 3px;
-        font-weight: bold;
-        display: inline;
-        border-color: white;
-      }
-      .green {
-        background-color: lightgreen;
-      }
-      .blue {
-        background-color: lightblue;
-      }
-    </style>
+    <link type="text/css" rel="stylesheet" href="main.css">
     <script src = "draggable.js"></script>
+    <script src = "semidraggable.js"></script>
   </head>
   <body>
-    <div class = "draggable green">
-      function (
-      <div class = "draggable blue">1</div>
-      )
-      <br>
+    <div id="draggablecontainer">
+      <div class = "draggable green">
+        function (
+        <div class = "draggable blue">1</div>
+        )
+        <br>
+      </div>
+      <div class = "draggable green">
+        function (
+        <div class = "draggable blue">2</div>
+        )
+        <br>
+      </div>
+      <div class = "draggable green">
+        function (
+        <div class = "draggable blue">3</div>
+        )
+        <br>
+      </div>
     </div>
-    <div class = "draggable green">
-      function (
-      <div class = "draggable blue">2</div>
-      )
-      <br>
-    </div>
-    <div class = "draggable green">
-      function (
-      <div class = "draggable blue">3</div>
-      )
-      <br>
+    <br><br><br><br><br><br>
+    <div id="semidraggablecontainer">
+      <div class = "semidraggable green">
+        semidraggable
+        <br>
+      </div>
     </div>
 
-    <script>registerevents()</script>
+    <script>
+      registerdragevents();
+      registersemidragevents();
+    </script>
   </body>
 </html>

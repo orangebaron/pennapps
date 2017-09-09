@@ -21,7 +21,7 @@ function getNearestElement() {
   if (isGreen) {
     //find which element it should come before
     var i = 0;
-    var allGreens = document.getElementsByClassName("draggable green");
+    var allGreens = document.getElementById("draggablecontainer").getElementsByClassName("draggable green");
     while (true) {
       if (i >= allGreens.length) { //reached the end of element list
         if (elem == currentobj) {
@@ -41,7 +41,7 @@ function getNearestElement() {
     }
   } else {
     //find the nearest blue object if it's close enough
-    var elems = document.getElementsByClassName("draggable blue");
+    var elems = document.getElementById("draggablecontainer").getElementsByClassName("draggable blue");
     var minDist = 65;
     var minElement;
     for (var i = 0;i<elems.length;i++) {
@@ -73,7 +73,7 @@ function highlightDiv(elem,red) {
       elem.style.border = "thick solid red";
     } else if (isGreen) {
       if (elem == "end") {
-        var allGreens = document.getElementsByClassName("draggable green");
+        var allGreens = document.getElementById("draggablecontainer").getElementsByClassName("draggable green");
         elem = allGreens.item(allGreens.length-1);
         elem.style.borderBottom = "thick solid yellow";
       } else {
@@ -86,8 +86,8 @@ function highlightDiv(elem,red) {
   highlightedDiv = elem;
 }
 
-function draggablemousedown(e) {
-  elem = e.target;
+function draggablemousedown(e,targetOverride = null) {
+  elem = targetOverride || e.target;
   if (elem.innerHTML == "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") {
     return;
   }
@@ -151,8 +151,8 @@ function draggablemouseup() {
   highlightDiv(null);
 }
 
-function registerevents() {
-  var elems = document.getElementsByClassName("draggable");
+function registerdragevents() {
+  var elems = document.getElementById("draggablecontainer").getElementsByClassName("draggable");
   for (var i = 0;i<elems.length;i++) {
     elems.item(i).onmousedown = draggablemousedown;
   }

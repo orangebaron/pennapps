@@ -1,0 +1,26 @@
+.draggable {
+  position: relative;
+  user-select: none;
+  color: white;
+  padding: 2px;
+  border-radius: 3px;
+  font-weight: bold;
+  display: inline;
+  border-color: white;
+}
+.semidraggable { /*wow its exactly the same as draggable*/
+  position: relative;
+  user-select: none;
+  color: white;
+  padding: 2px;
+  border-radius: 3px;
+  font-weight: bold;
+  display: inline;
+  border-color: white;
+}
+.green {
+  background-color: lightgreen;
+}
+.blue {
+  background-color: lightblue;
+}
