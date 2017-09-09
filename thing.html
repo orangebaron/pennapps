@@ -345,10 +345,13 @@
       s.className = "temporary";
     }
     var returnVal = document.getElementById("draggablecontainer").innerHTML;
-    var temps = document.getElementById("draggablecontainer").getElementsByClassName("temporary");
-    for (var i = 0;i<temps.length;i++) {
+    while (true) {
       //delete all the temporary crap we made before
-      var elem = temps.item(i);
+      var temps = document.getElementById("draggablecontainer").getElementsByClassName("temporary");
+      if (temps.length == 0) {
+        break;
+      }
+      var elem = temps.item(0);
       elem.parentElement.removeChild(elem);
     }
     return returnVal;

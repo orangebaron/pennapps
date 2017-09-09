@@ -139,7 +139,6 @@ function draggablemouseup() {
       currentobj.style.left = "0px";
       currentobj.style.top = "0px";
     } else if (elem) {
-      console.log(elem);
       currentobj.parentElement.insertBefore(currentobj,elem);
       currentobj.style.left = "0px";
       currentobj.style.top = "0px";
@@ -190,7 +189,12 @@ function semidraggablemousedown(e) {
   if (e.target.tagName != "DIV") {
     return
   }
-  var elem = e.target.cloneNode(true);
+  var elem;
+  if (e.target.className.search("semidraggable")==-1) {
+    elem = e.target.parentElement.cloneNode(true);
+  } else {
+    elem = e.target.cloneNode(true);
+  }
   elem.className = elem.className.replace("semidraggable","draggable");
   document.getElementById("draggablecontainer").appendChild(elem);
   var positionDifference = totaloffset(e.target);
