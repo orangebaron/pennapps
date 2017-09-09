@@ -95,6 +95,14 @@
             <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
             <br>
           </div>
+          <div class = "semidraggable green">
+            <span>return</span>
+            <br>
+          </div>
+          <div class="semidraggable green">
+            <span>break</span>
+            <br>
+          </div>
         </div>
         <div class="bottom panel" id="math">
           <div class = "semidraggable blue">
@@ -186,6 +194,11 @@
           <div class = "semidraggable blue">
             <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
             &nbsp;or&nbsp;
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+          </div>
+          <br>
+          <div class="semidraggable blue">
+            not&nbsp;
             <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
           </div>
           <br>
@@ -301,7 +314,7 @@
     </div>
     <div class="column content" style="width: 30%;">
       <h3>Blocks</h3>
-      <button type="button" onclick="block_to_code()">Convert to Code</button><br>
+      <button type="button" onclick="block_to_code(); runit();">Convert to Code</button><br>
       <div id="draggablecontainer" style="text-align: left;">
         <div class = "draggable green">
           print(
@@ -347,6 +360,7 @@
   </script>
   <div class="footer">
     <p>This is a project for PennApps XVI by Sam Uwe Alws and Eric Zheng.</p>
+    <p>Check out our <a href="https://github.com/orangebaron/pennapps">Github repo</a> for more!</p>
   </div>
   <script type="text/javascript">
   Sk.externalLibraries = {
