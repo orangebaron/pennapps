@@ -76,7 +76,6 @@
       </div>
     </div>
     <script>
-<<<<<<< HEAD
       //download editor contents as .py file
       function download(filename, text) {
         var element = document.createElement('a');
@@ -146,68 +145,6 @@
           elem.parentElement.removeChild(elem);
         }
         return returnVal;
-=======
-    //download editor contents as .py file
-    function download(filename, text) {
-      var element = document.createElement('a');
-      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-      element.setAttribute('download', filename);
-      element.style.display = 'none';
-      document.body.appendChild(element);
-      element.click();
-      document.body.removeChild(element);
-    }
-    document.getElementById("dwn-btn").addEventListener("click", function(){
-      var text = editor.getValue();
-      var filename = "script.py";
-      download(filename, text);
-    }, false);
-    </script>
-    <div class="footer">
-      <p>This is a project for PennApps XVI by Sam Uwe Alws and Eric Zheng.</p>
-    </div>
-    <script type="text/javascript">
-    Sk.externalLibraries = {
-      numpy: {
-        path: "https://raw.githubusercontent.com/waywaaard/skulpt_numpy/master/numpy/__init__.js"
-      }
-    }
-    function outf(text) {
-      var mypre = document.getElementById("output");
-      mypre.innerHTML = mypre.innerHTML + text;
-    }
-    function builtinRead(x) {
-      if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-      throw "File not found: '" + x + "'";
-      return Sk.builtinFiles["files"][x];
-    }
-    function runit() {
-      var prog = editor.getValue();
-      var mypre = document.getElementById("output");
-      mypre.innerHTML = '';
-      Sk.pre = "output";
-      Sk.configure({output:outf, read:builtinRead});
-      (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
-      var myPromise = Sk.misceval.asyncToPromise(function() {
-        return Sk.importMainWithBody("<stdin>", false, prog, true);
-      });
-      myPromise.then(function(mod) {
-        console.log('success');
-      },
-      function(err) {
-        console.log(err.toString());
-      });
-    }
-    function get_html() {
-      var inputs = document.getElementById("draggablecontainer").getElementsByTagName("input");
-      for (var i = 0;i<inputs.length;i++) {
-        //add a temporary span that has the value as innerhtml
-        var elem = inputs.item(i);
-        var s = document.createElement("span");
-        s.innerHTML = elem.value;
-        elem.parentElement.insertBefore(s,elem);
-        s.className = "temporary";
->>>>>>> 95c21f31ec632890e4ad8467069f14d8bffe058a
       }
       function block_to_code() {
         editor.setValue(parse(get_html()));
