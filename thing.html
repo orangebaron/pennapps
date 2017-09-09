@@ -18,13 +18,13 @@
   <div class="clearfix">
     <div class="column content" style="text-align:right; width: 10%;">
       <h3>&nbsp;</h3>
-      <p onclick="showpanel('basic')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Basic</p>
-      <p onclick="showpanel('flowcontrol')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Flow Control</p>
-      <p onclick="showpanel('primitives')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Primitives</p>
-      <p onclick="showpanel('logic')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Logic</p>
-      <p onclick="showpanel('math')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Math</p>
-      <p onclick="showpanel('group')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Groups</p>
-      <p onclick="showpanel('uwedefined')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">User-Defined</p>
+      <p onclick="showpanel('basic',this)" class = "sidebtn" id = "firstbtn" onload="showpanel('basic')">Basic</p>
+      <p onclick="showpanel('flowcontrol',this)" class = "sidebtn">Flow Control</p>
+      <p onclick="showpanel('primitives',this)" class = "sidebtn">Primitives</p>
+      <p onclick="showpanel('logic',this)" class = "sidebtn">Logic</p>
+      <p onclick="showpanel('math',this)" class = "sidebtn">Math</p>
+      <p onclick="showpanel('group',this)" class = "sidebtn">Groups</p>
+      <p onclick="showpanel('uwedefined',this)" class = "sidebtn">User-Defined</p>
     </div>
     <div class="column content" style="width: 30%;">
       <h3>Templates</h3>
