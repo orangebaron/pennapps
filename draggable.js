@@ -134,7 +134,12 @@ function draggablemouseup() {
       currentobj.parentElement.removeChild(currentobj);
     }
   } else {
-    if (elem) {
+    if (currentobj.parentElement == document.getElementById("draggablecontainer")) {
+      if (elem) {
+        elem.innerHTML = currentobj.innerHTML;
+      }
+      currentobj.parentElement.removeChild(currentobj);
+    } else if (elem) {
       var text = currentobj.innerHTML;
       currentobj.innerHTML = elem.innerHTML;
       elem.innerHTML = text;
