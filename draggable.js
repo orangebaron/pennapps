@@ -96,7 +96,10 @@ function highlightDiv(elem,writeinred) {
 }
 
 function draggablemousedown(e,targetOverride = null) {
-  elem = targetOverride || e.target;
+  var elem = targetOverride || e.target;
+  if (elem.tagName != "DIV") {
+    elem = elem.parentElement;
+  }
   if (elem.innerHTML == "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") {
     return;
   }
@@ -184,7 +187,12 @@ function registerdragevents() {
 //semidraggable objects spawn a clone of itself when you hold down
 //your mouse on it
 function semidraggablemousedown(e) {
-  var elem = e.target.cloneNode(true);
+  var elem;
+  if (e.target.tagName == "DIV") {
+    elem = e.target.cloneNode(true);
+  } else {
+    elem = e.target.parentElement.cloneNode(true);
+  }
   elem.className = elem.className.replace("semidraggable","draggable");
   document.getElementById("draggablecontainer").appendChild(elem);
   var positionDifference = totaloffset(e.target);
