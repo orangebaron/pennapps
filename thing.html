@@ -9,14 +9,6 @@ h3 {
   box-sizing: border-box;
 }
 #editor {
-  <!--
-  position: absolute;
-  top: 200px;
-  right: 20px;
-  bottom: 20px;
-  left: 200px;
-  //-->
-  float: right;
   padding: 15px;
   height: 200px;
 }
@@ -45,19 +37,10 @@ h3 {
   text-align: center;
   width: 50%;
 }
-.menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.menu li {
-  padding: 8px;
-  margin-bottom: 8px;
-  background-color: #33b5e5;
-  color: #ffffff;
-}
-.menu li:hover {
-  background-color: #0099cc;
+.editor-window {
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
 }
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
@@ -75,10 +58,11 @@ h3 {
     </div>
     <div class="column content">
       <h3>Code</h3>
-      <pre id="output"></pre>
+      <pre id="output" style="border: 1px solid grey"></pre>
       <button type="button" onclick="runit()">Run Code</button>
       <input type="button" id="dwn-btn" value="Download Code"/>
-      <div id="editor" class="content">print("Hello World!")</div>
+      <br>
+      <div id="editor" class="editor-window">print("Hello World!")</div>
       <script>
       var editor = ace.edit("editor");
       editor.setTheme("ace/theme/monokai");
@@ -108,30 +92,30 @@ h3 {
   </div>
   <script type="text/javascript">
   function outf(text) {
-      var mypre = document.getElementById("output");
-      mypre.innerHTML = mypre.innerHTML + text;
+    var mypre = document.getElementById("output");
+    mypre.innerHTML = mypre.innerHTML + text;
   }
   function builtinRead(x) {
-      if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
-              throw "File not found: '" + x + "'";
-      return Sk.builtinFiles["files"][x];
+    if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+    throw "File not found: '" + x + "'";
+    return Sk.builtinFiles["files"][x];
   }
   function runit() {
-     var prog = editor.getValue();
-     var mypre = document.getElementById("output");
-     mypre.innerHTML = '';
-     Sk.pre = "output";
-     Sk.configure({output:outf, read:builtinRead});
-     (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
-     var myPromise = Sk.misceval.asyncToPromise(function() {
-         return Sk.importMainWithBody("<stdin>", false, prog, true);
-     });
-     myPromise.then(function(mod) {
-         console.log('success');
-     },
-         function(err) {
-         console.log(err.toString());
-     });
+    var prog = editor.getValue();
+    var mypre = document.getElementById("output");
+    mypre.innerHTML = '';
+    Sk.pre = "output";
+    Sk.configure({output:outf, read:builtinRead});
+    (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+    var myPromise = Sk.misceval.asyncToPromise(function() {
+      return Sk.importMainWithBody("<stdin>", false, prog, true);
+    });
+    myPromise.then(function(mod) {
+      console.log('success');
+    },
+    function(err) {
+      console.log(err.toString());
+    });
   }
   </script>
 </body>
