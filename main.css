@@ -57,7 +57,10 @@
   font-family: arial;
   background-color: #4286f4;
   color: white;
-  padding: 15px
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 .column {
   float: left;
