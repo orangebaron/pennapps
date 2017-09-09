@@ -410,10 +410,11 @@
     }
     var returnVal = document.getElementById("draggablecontainer").innerHTML;
     var temps = document.getElementById("draggablecontainer").getElementsByClassName("temporary");
-    for (var i = 0;i<temps.length;i++) {
+    while (temps.length > 0) {
       //delete all the temporary crap we made before
-      var elem = temps.item(i);
+      var elem = temps.item(0);
       elem.parentElement.removeChild(elem);
+      temps = document.getElementById("draggablecontainer").getElementsByClassName("temporary");
     }
     return returnVal;
   }
