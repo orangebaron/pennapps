@@ -1,3 +1,5 @@
+/* removes unnecessary whitespace
+*/
 function purify(text) {
   var out = "";
   var len = 0;
@@ -12,9 +14,11 @@ function purify(text) {
       len += 1;
     }
   }
-  return out;
+  return out.replace(new RegExp("&nbsp;&nbsp;&nbsp;&nbsp;", "g"), "\t");
 }
 
+/* prases html string into Python
+*/
 function parse(string) {
   var str_arr = string.split("\n");
   var out = "";
