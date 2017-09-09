@@ -5,9 +5,10 @@
     <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
     <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script src="parse.js" type="text/javascript"></script>
+    <script src="parse.js"></script>
     <link type="text/css" rel="stylesheet" href="main.css">
     <script src = "draggable.js"></script>
+    <script src = "panels.js"></script>
   </head>
   <body>
     <div class="header">
@@ -15,10 +16,18 @@
       <h1 style="display:inline;font-size:4em;">blockat</h1>
     </div>
     <div class="clearfix">
+      <div class="column content" style="text-align:right;">
+        <h3>&nbsp;</h3>
+        <p onclick="showpanel('flowcontrol')">Flow Control</p>
+        <p onclick="showpanel('primitives')">Primitives</p>
+        <p onclick="showpanel('logic')">Logic</p>
+        <p onclick="showpanel('math')">Math</p>
+        <p onclick="showpanel('uwedefined')">User-Defined</p>
+      </div>
       <div class="column content">
         <h3>Templates</h3>
         <div id="semidraggablecontainer" style="position:relative">
-          <div class="top panel">
+          <div class="bottom panel" id="flowcontrol">
             <div class = "semidraggable green endswithsemicolon">
               if&nbsp;
               <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
@@ -41,7 +50,7 @@
             <br>
             <div class = "semidraggable green">
               <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-              =
+              &nbsp;=&nbsp;
               <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
               <br>
             </div>
@@ -153,6 +162,7 @@
       function block_to_code() {
         editor.setValue(parse(get_html()));
       }
+      showpanel("flowcontrol");
       registerdragevents();
       registersemidragevents();
     </script>
