@@ -23,6 +23,7 @@
       <p onclick="showpanel('primitives')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Primitives</p>
       <p onclick="showpanel('logic')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Logic</p>
       <p onclick="showpanel('math')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Math</p>
+      <p onclick="showpanel('group')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">Groups</p>
       <p onclick="showpanel('uwedefined')" onmouseover="this.style.background='gray';" onmouseout="this.style.background='white';">User-Defined</p>
     </div>
     <div class="column content">
@@ -46,6 +47,12 @@
             )
             <br>
           </div>
+          <div class = "semidraggable blue">
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            ,&nbsp;
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+          </div>
+          <br>
         </div>
         <div class="bottom panel" id="flowcontrol">
           <div class = "semidraggable green endswithsemicolon">
@@ -212,6 +219,38 @@
           </div>
           <br>
         </div>
+        <div class="bottom panel" id="group">
+          <div class = "semidraggable blue">
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            ,&nbsp;
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+          </div>
+          <br>
+          <div class = "semidraggable blue">
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            :&nbsp;
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+          </div>
+          <br>
+          <div class = "semidraggable blue">
+            [
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            ]
+          </div>
+          <br>
+          <div class = "semidraggable blue">
+            {
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            }
+          </div>
+          <br>
+          <div class = "semidraggable blue">
+            (
+            <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            )
+          </div>
+          <br>
+        </div>
       </div>
     </div>
     <div class="column content" style="text-align:left;">
@@ -220,7 +259,7 @@
       <div id="draggablecontainer">
         <div class = "draggable green">
           print(
-          <div class = "semidraggable blue">
+          <div class = "draggable blue">
             &nbsp;<input type="number" style = "width:5em;" placeholder="num" value="65"></input>&nbsp;
           </div>
           )
