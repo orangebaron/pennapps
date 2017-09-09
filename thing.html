@@ -97,6 +97,11 @@
         <p>This is a project for PennApps XVI by Sam Uwe Alws and Eric Zheng.</p>
       </div>
       <script type="text/javascript">
+      Sk.externalLibraries = {
+        numpy: {
+          path: "https://raw.githubusercontent.com/waywaaard/skulpt_numpy/master/numpy/__init__.js"
+        }
+      }
       function outf(text) {
         var mypre = document.getElementById("output");
         mypre.innerHTML = mypre.innerHTML + text;
