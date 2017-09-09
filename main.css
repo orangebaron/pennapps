@@ -19,7 +19,8 @@
   border-color: white;
 }
 .green {
-  background-color: lightgreen;
+  /*background-color: lightgreen;*/
+  background-color: #50C900
 }
 .blue {
   background-color: lightblue;
