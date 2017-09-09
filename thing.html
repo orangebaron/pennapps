@@ -35,7 +35,7 @@ h3 {
 }
 .content {
   text-align: center;
-  width: 50%;
+  width: 33%;
 }
 .editor-window {
   text-align: center;
@@ -57,6 +57,21 @@ h3 {
     <h1>ChingChong</h1>
   </div>
   <div class="clearfix">
+    <div class="column content">
+      <h3>Templates</h3>
+      <div id="semidraggablecontainer">
+        <div class = "semidraggable green">
+          print(
+          <div class="draggable blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+          )
+          <br>
+        </div>
+        <div class = "semidraggable blue">
+          65
+        </div>
+        <br>
+      </div>
+    </div>
     <div class="column content">
       <h3>Blocks</h3>
       <button type="button" onclick="block_to_code()">Convert to Code</button><br>
@@ -149,6 +164,7 @@ h3 {
     editor.setValue(parse(get_html()));
   }
   registerdragevents();
+  registersemidragevents();
   </script>
 </body>
 </html>
