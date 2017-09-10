@@ -317,7 +317,7 @@
     <div class="column content" style="width: 30%;">
       <h3>Blocks</h3>
       <button type="button" onclick="saveblocks()">Save Blocks</button>
-      <button type="button" id="loadblocks">Load Blocks</button>
+      <input type="file" id="loadblocks"></input>
       <button type="button" onclick="block_to_code(); runit();">Convert to Code</button><br>
       <div id="draggablecontainer" style="text-align: left;">
         <div class = "draggable green">
@@ -428,14 +428,18 @@
       document.getElementById("bool").innerHTML = "false";
     }
   }
-  /*FileReaderJS.setupInput(document.getElementById("loadblocks"), {
+  FileReaderJS.setupInput(document.getElementById("loadblocks"), {
     readAsDefault: "DataURL",
     on: {
       load: function(e, file) {
-        console.log(e.target.result);
+        document.getElementById("draggablecontainer").innerHTML =
+          window.atob(e.target.result.substring(22));
+        registerdragevents();
+        window.setTimeout(function(){document.getElementById("loadblocks").value = "";},
+          3000);
       }
     }
-  });*/
+  });
   showpanel("flowcontrol");
   registerdragevents();
   registersemidragevents();
