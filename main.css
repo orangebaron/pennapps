@@ -1,25 +1,14 @@
-.draggable {
+.draggable, .semidraggable {
   position: relative;
   user-select: none;
   color: white;
-  padding: 2px 4px;
-  border-radius: 3px;
-  font-weight: bold;
-  display: inline;
-  border-color: white;
-}
-.semidraggable { /*wow its exactly the same as draggable*/
-  position: relative;
-  user-select: none;
-  color: white;
-  padding: 2px;
+  padding: 0 4px;
   border-radius: 3px;
   font-weight: bold;
   display: inline;
   border-color: white;
 }
 .green {
-  /*background-color: lightgreen;*/
   background-color: #50C900
 }
 .blue {
@@ -43,6 +32,10 @@
   background-color: #2266d4;
   padding: 2px;
   border-radius: 2px;
+}
+
+button {
+  margin: 5px;
 }
 
 .panel {
@@ -92,7 +85,7 @@
   text-align: center;
 }
 .editor-window {
-  margin: 0 auto;
+  margin: 5px auto;
   width: 100%;
 }
 body {
