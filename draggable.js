@@ -104,6 +104,7 @@ function draggablemousedown(e,targetOverride = null) {
   if (elem.innerHTML == "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") {
     return;
   }
+  fixAllElemVals(elem);
   isGreen = elem.className.search("green") != -1;
   isRed = elem.className.search("red") != -1;
   lastX.set(elem,e.clientX);
