@@ -37,7 +37,7 @@ function parse(string) {
       }
     }
   }
-  return out;
+  return out.replace("&gt;",">").replace("&lt;","<");
 }
 
 /* parses Python into html
